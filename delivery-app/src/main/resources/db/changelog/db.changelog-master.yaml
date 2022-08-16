@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mellik21
+      changes:
+        - createTable:
+            tableName: courier
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: district
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: available
+                  type: boolean
+
+  - changeSet:
+      id: 2
+      author: mellik21
+      changes:
+        - createTable:
+            tableName: order
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: courier_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_courier_id
+                    references: courier(id)
+              - column:
+                  name: restaurant_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: comment
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: creation_date
+                  type: timestamp
+                  constraints:
+                    nullable: true

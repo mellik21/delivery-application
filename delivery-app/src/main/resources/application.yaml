@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: delivery-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/departmentdb
+    username: postgres
+    password: 111
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    generate-ddl: false
+    properties:
+      hibernate:
+        temp.use_jdbc_metadata_defaults: false
+        globally_quoted_identifiers: false
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+
+server:
+  port: 8087
+
+
